@@ -1,0 +1,42 @@
+name: Build & Release ArduinoBackupTool
+
+on:
+  push:
+    tags:
+      - 'v*'  # Exemple : v1.0.0
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install pyqt5 pyserial pyinstaller pywin32
+
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller --noconfirm --onefile --windowed ^
+          --icon=assets/app.ico ^
+          --name=ArduinoBackupTool ^
+          --hidden-import=serial.tools.list_ports ^
+          --add-binary=avrdude/avrdude.exe;. ^
+          --add-data=avrdude/avrdude.conf;. ^
+          --add-data=assets/loader.gif;. ^
+          --add-data=assets/app.ico;. ^
+          src/arduino_backup_tool.py
+
+    - name: Upload to GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/ArduinoBackupTool.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
