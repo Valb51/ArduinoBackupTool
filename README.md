@@ -1,3 +1,6 @@
+[![Download](https://img.shields.io/github/v/release/Valb51/ArduinoBackupTool?label=Download%20Latest)](https://github.com/Valb51/ArduinoBackupTool/releases/latest)
+
+
 ## 📦 Arduino Backup Tool
 
 **Arduino Backup Tool** is a graphical utility designed to **extract** and **restore** the firmware (`.hex`) and EEPROM (`.eep`) memory from Arduino boards (like the Nano or Uno) using **AVRDUDE**.  

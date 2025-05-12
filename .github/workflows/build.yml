@@ -3,7 +3,7 @@ name: Build & Release ArduinoBackupTool
 on:
   push:
     tags:
-      - 'v*'  # Exemple : v1.0.0
+      - 'v*'
 
 jobs:
   build:
@@ -23,16 +23,7 @@ jobs:
         pip install pyqt5 pyserial pyinstaller pywin32
 
     - name: Build with PyInstaller
-      run: |
-        pyinstaller --noconfirm --onefile --windowed ^
-          --icon=assets/app.ico ^
-          --name=ArduinoBackupTool ^
-          --hidden-import=serial.tools.list_ports ^
-          --add-binary=avrdude/avrdude.exe;. ^
-          --add-data=avrdude/avrdude.conf;. ^
-          --add-data=assets/loader.gif;. ^
-          --add-data=assets/app.ico;. ^
-          src/arduino_backup_tool.py
+      run: pyinstaller --noconfirm --onefile --windowed --icon=assets/app.ico --name=ArduinoBackupTool --hidden-import=serial.tools.list_ports --add-binary=avrdude/avrdude.exe;. --add-data=avrdude/avrdude.conf;. --add-data=assets/loader.gif;. --add-data=assets/app.ico;. src/arduino_backup_tool.py
 
     - name: Upload to GitHub Release
       uses: softprops/action-gh-release@v1
