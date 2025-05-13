@@ -1,0 +1,21 @@
+# === Dossiers temporaires et de build ===
+build/
+dist/
+__pycache__/
+*.spec
+*.pyc
+*.pyo
+
+# === Fichiers exécutables ===
+ArduinoBackupTool.exe
+
+# === Environnements virtuels ===
+.venv/
+.env/
+
+# === Données utilisateur ===
+backup/
+
+# === Fichiers système inutiles ===
+.DS_Store
+Thumbs.db
