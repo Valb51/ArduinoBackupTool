@@ -1,21 +1,46 @@
-# === Dossiers temporaires et de build ===
-build/
-dist/
+# Python
 __pycache__/
-*.spec
-*.pyc
+*.py[cod]
 *.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
 
-# === Fichiers exécutables ===
-ArduinoBackupTool.exe
+# PyInstaller
+dist/
+build/
+*.spec
 
-# === Environnements virtuels ===
+# Environnements virtuels
+venv/
+env/
 .venv/
 .env/
 
-# === Données utilisateur ===
-backup/
+# IDEs
+.vscode/
+.idea/
 
-# === Fichiers système inutiles ===
-.DS_Store
+# Windows
 Thumbs.db
+Desktop.ini
+
+# PyQt & ressources
+*.qrc
+*.ui~
+
+# Sauvegardes temporaires
+*~
+*.bak
+
+# Fichiers générés par le programme
+backup/
+*.hex
+*.eep
+output/
+
+# Configuration locale
+.settings/
+config.ini
